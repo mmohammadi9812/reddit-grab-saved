@@ -21,6 +21,21 @@ pip3 install -r requirements.txt
 
 ## Usage
 
+Go to [reddit apps page](https://reddit.com/prefs/apps/) and make an script app.
+It will create a reddit app for you and will give you an id and a secret.
+Create a `.env` file in folder of project and fill it with these lines:
+
+``` sh
+export CLIENT_ID=<your app client id>
+export CLIENT_SECRET=<your app client secret>
+export USER_AGENT="linux:<id>:1.0 (by /u/<username>)"
+export REDDIT_USER_NAME=<your user name>
+export REDDIT_PASSWORD=<your password>
+```
+Change right side of export lines with your app id and secret and other needed info
+
+Then it's ready to run:
+
 ```sh
 python3 main.py
 ```
