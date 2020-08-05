@@ -134,6 +134,16 @@ def main():
 if __name__ == '__main__':
     postsdf, commentsdf = main()
 
+    subgroup = postsdf.groupby('subreddit')
+    subreddits = [subgroup.get_group(x) for x in subgroup.groups]
+    subreddits = sorted(subreddits, key=len, reverse=True)
+
+    os.makedirs("posts", exist_ok=True)
+
+    for subreddit in subreddits:
+        name = subreddit.subreddit.unique()[0]
+        subreddit.to_csv(f"posts/{name}.csv")
+        subreddit.to_excel(f"posts/{name}.xls")
     postsdf.to_csv('saved_posts.csv')
     postsdf.to_excel('saved_posts.xls')
 
